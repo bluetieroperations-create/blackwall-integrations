@@ -1,0 +1,78 @@
+# Black_Wall framework integrations
+
+Drop-in guards that put a **pre-action risk check** in front of any tool your AI
+agent is about to run — send an email, run SQL, make a payment, delete a file.
+The agent's proposed action is sent to Black_Wall first; you get back a verdict,
+and the guard decides whether to let it through.
+
+> Black_Wall is a pre-action risk-check API for AI agents — a BLUETIER product.
+> Free tier: **~100 forecasts/month, no credit card**. Get a key at
+> **https://blackwalltier.com**.
+
+## The decision model
+
+Every forecast returns two things the guards key on:
+
+| Field | Values | Meaning |
+|---|---|---|
+| `gate` | `AUTO` · `CONFIRM` · `HUMAN_REQUIRED` | The actionable control — what should happen to the action |
+| `recommendation` | `GO` · `CAUTION` · `STOP` | The human-readable verdict |
+
+The gate is derived from **risk score** (0–100) **and reversibility** (can it be
+undone?) — an irreversible action gets held at a lower risk than a reversible one.
+These guards map the gate to behaviour:
+
+- **`AUTO`** → run the tool.
+- **`CONFIRM`** → hold for a human (default: block; pass an `on_confirm` hook to allow).
+- **`HUMAN_REQUIRED`** → block, return the red flags + safer alternatives.
+
+If the API call fails or times out, the guards **fail closed** (block) by default —
+it's a safety layer, so the safe failure is to stop. Every guard exposes a flag to
+fail open instead if you'd rather the agent keep moving when the check is unavailable.
+
+## The endpoint
+
+```
+POST https://blackwalltier.com/api/v1/forecast
+Authorization: Bearer bw_live_...
+Content-Type: application/json
+
+{
+  "action": "send_email",
+  "inputs": { "to": "client@acme.com", "subject": "...", "body": "..." },
+  "context": { "agent_role": "support bot", "user_intent": "reply to a ticket" },
+  "options": { "depth": "standard" }   // "deep" adds reasoning trace + mitigations
+}
+```
+
+Response (the fields the guards use):
+
+```json
+{
+  "id": "fc_...",
+  "recommendation": "CAUTION",
+  "risk_score": 62,
+  "gate": "CONFIRM",
+  "reversibility": { "class": "RECOVERABLE", "rollback_cost": 50 },
+  "red_flags": [{ "severity": "high", "code": "MISSING_AUTH", "message": "..." }],
+  "alternative_actions": ["Ask the customer to confirm before refunding"],
+  "tokens_charged": 87,
+  "latency_ms": 3400
+}
+```
+
+Latency is a few seconds (typically **4–8s** standard, **10–13s** deep) — this runs
+once before a consequential action, not on every token. There are **28 red-flag
+codes** in the taxonomy.
+
+## Pick your framework
+
+| Framework | File |
+|---|---|
+| LangChain (Python) | [`langchain/`](./langchain) |
+| CrewAI (Python) | [`crewai/`](./crewai) |
+| Vercel AI SDK (TypeScript) | [`vercel-ai-sdk/`](./vercel-ai-sdk) |
+| OpenAI tool calling (Python + TS) | [`openai/`](./openai) |
+
+Each file is self-contained — copy it into your project, set `BLACKWALL_API_KEY`,
+and wrap your tools. No SDK dependency; just an HTTP call.
