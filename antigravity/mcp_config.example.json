@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "blackwall": {
+      "command": "npx",
+      "args": ["-y", "blackwall-mcp"],
+      "env": {
+        "BLACKWALL_API_KEY": "bw_live_your_key_here",
+        "BLACKWALL_MODE": "enforce"
+      }
+    }
+  }
+}

@@ -73,6 +73,11 @@ codes** in the taxonomy.
 | CrewAI (Python) | [`crewai/`](./crewai) |
 | Vercel AI SDK (TypeScript) | [`vercel-ai-sdk/`](./vercel-ai-sdk) |
 | OpenAI tool calling (Python + TS) | [`openai/`](./openai) |
+| Google Antigravity (MCP host) | [`antigravity/`](./antigravity) |
 
-Each file is self-contained — copy it into your project, set `BLACKWALL_API_KEY`,
-and wrap your tools. No SDK dependency; just an HTTP call.
+The framework files above are self-contained — copy one into your project, set
+`BLACKWALL_API_KEY`, and wrap your tools. No SDK dependency; just an HTTP call.
+
+**MCP hosts** — Google Antigravity, Cursor, Claude Code/Desktop, Windsurf — can
+skip the code entirely: add the published [`blackwall-mcp`](https://www.npmjs.com/package/blackwall-mcp)
+server and the agent gets a `forecast` tool. See [`antigravity/`](./antigravity).
