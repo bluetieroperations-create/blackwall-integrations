@@ -78,7 +78,9 @@ codes** in the taxonomy.
 | LlamaIndex (Python) | [`llamaindex/`](./llamaindex) |
 | n8n (no-code — HTTP Request + IF nodes) | [`n8n/`](./n8n) |
 | Stripe Agent Toolkit — gate money-moving actions (Python) | [`stripe-agent-toolkit/`](./stripe-agent-toolkit) |
+| LiteLLM Proxy — gateway guardrail (Python) | [`litellm/`](./litellm) |
 | MCP hosts — Cursor, Claude Code/Desktop, Windsurf, Antigravity | [`mcp/`](./mcp) |
+| Coding agents (Aider, Cline, OpenHands, Goose) — via MCP | [`coding-agents/`](./coding-agents) |
 
 The framework files above are self-contained — copy one into your project, set
 `BLACKWALL_API_KEY`, and wrap your tools. No SDK dependency; just an HTTP call.
