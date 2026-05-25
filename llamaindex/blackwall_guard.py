@@ -27,7 +27,8 @@ class ActionBlocked(Exception):
         self.verdict = verdict
         flags = ", ".join(f.get("code", "") for f in verdict.get("red_flags", [])) or "none"
         super().__init__(
-            f"Black_Wall blocked: gate={verdict.get('gate')} "
+            f"Black_Wall blocked this action — it was NOT executed; do not assume it "
+            f"succeeded or build on it. gate={verdict.get('gate')} "
             f"risk={verdict.get('risk_score')} flags=[{flags}]"
         )
 
