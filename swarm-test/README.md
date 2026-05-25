@@ -43,15 +43,17 @@ action about to run, attaches them as `prior_findings`, and returns the verdict.
 
 ## It changes the verdict
 
-The same action, with vs. without that critical finding attached:
+Attaching a critical finding to an otherwise-borderline action escalates it. From a
+representative run of the demo below — the brain is non-deterministic, so exact
+scores vary; the **escalation** is the point:
 
 | | recommendation | risk | gate |
 |---|---|---|---|
-| without findings | CAUTION | 62 | CONFIRM |
-| with the critical finding | STOP | 78 | HUMAN_REQUIRED |
+| without findings | CAUTION | ~62 | CONFIRM |
+| with the critical finding | STOP | ~78 | HUMAN_REQUIRED |
 
 The predicted outcome also picks up the flagged `cascade` risk. Run
-[`swarm_test_adapter.py`](./swarm_test_adapter.py) directly to reproduce it (needs a free key).
+[`swarm_test_adapter.py`](./swarm_test_adapter.py) to see it on your own key.
 
 ## Notes
 
