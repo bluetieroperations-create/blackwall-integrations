@@ -81,3 +81,12 @@ The framework files above are self-contained — copy one into your project, set
 **MCP hosts** — Cursor, Claude Code/Desktop, Windsurf, Google Antigravity — can skip
 the code entirely: add the published [`blackwall-mcp`](https://www.npmjs.com/package/blackwall-mcp)
 server and the agent gets a `forecast` tool. Setup for each: [`mcp/`](./mcp) (Antigravity deep-dive: [`antigravity/`](./antigravity)).
+
+## Pairs with other tools
+
+Some tools feed Black_Wall rather than wrap it. These ride in as
+`context.prior_findings` — offline risk analysis the runtime gate weights as priors.
+
+| Tool | What it adds | File |
+|---|---|---|
+| [swarm-test](https://github.com/surajkumar811/swarm-test) — multi-agent reliability testing | Flags risky agents / tools / interaction edges offline; the gate weights them at runtime | [`swarm-test/`](./swarm-test) |
