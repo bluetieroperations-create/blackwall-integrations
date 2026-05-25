@@ -77,6 +77,7 @@ codes** in the taxonomy.
 | AutoGen / AG2 (Python) | [`autogen/`](./autogen) |
 | LlamaIndex (Python) | [`llamaindex/`](./llamaindex) |
 | n8n (no-code — HTTP Request + IF nodes) | [`n8n/`](./n8n) |
+| Stripe Agent Toolkit — gate money-moving actions (Python) | [`stripe-agent-toolkit/`](./stripe-agent-toolkit) |
 | MCP hosts — Cursor, Claude Code/Desktop, Windsurf, Antigravity | [`mcp/`](./mcp) |
 
 The framework files above are self-contained — copy one into your project, set
