@@ -73,6 +73,10 @@ codes** in the taxonomy.
 | CrewAI (Python) | [`crewai/`](./crewai) |
 | Vercel AI SDK (TypeScript) | [`vercel-ai-sdk/`](./vercel-ai-sdk) |
 | OpenAI tool calling (Python + TS) | [`openai/`](./openai) |
+| Pydantic AI (Python) | [`pydantic-ai/`](./pydantic-ai) |
+| AutoGen / AG2 (Python) | [`autogen/`](./autogen) |
+| LlamaIndex (Python) | [`llamaindex/`](./llamaindex) |
+| n8n (no-code — HTTP Request + IF nodes) | [`n8n/`](./n8n) |
 | MCP hosts — Cursor, Claude Code/Desktop, Windsurf, Antigravity | [`mcp/`](./mcp) |
 
 The framework files above are self-contained — copy one into your project, set
