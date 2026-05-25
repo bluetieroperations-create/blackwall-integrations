@@ -78,6 +78,8 @@ codes** in the taxonomy.
 | LlamaIndex (Python) | [`llamaindex/`](./llamaindex) |
 | n8n (no-code — HTTP Request + IF nodes) | [`n8n/`](./n8n) |
 | Stripe Agent Toolkit — gate money-moving actions (Python) | [`stripe-agent-toolkit/`](./stripe-agent-toolkit) |
+| PayPal Agent Toolkit — gate money-moving actions (Python) | [`paypal-agent-toolkit/`](./paypal-agent-toolkit) |
+| Coinbase AgentKit — gate on-chain (irreversible) actions (Python) | [`coinbase-agentkit/`](./coinbase-agentkit) |
 | LiteLLM Proxy — gateway guardrail (Python) | [`litellm/`](./litellm) |
 | MCP hosts — Cursor, Claude Code/Desktop, Windsurf, Antigravity | [`mcp/`](./mcp) |
 | Coding agents (Aider, Cline, OpenHands, Goose) — via MCP | [`coding-agents/`](./coding-agents) |
